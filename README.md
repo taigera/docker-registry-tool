@@ -22,9 +22,9 @@ You need to satisfy the following dependencies in order to compile the project
 Follow these instructions to compile and install docker-registry-tool.
 
 1. Clone this repository.
-2. Check that you have satisfied all dependencies by executing the command `python docker_registry_tool.py` . If the previous command does not return any error, then proceed to the next step.
+2. Check that you have satisfied all dependencies by executing the command `python docker_registry_tool.py`. If the previous command does not return any error, then proceed to the next step.
 3. Install PyInstaller as explained [here](http://pythonhosted.org/PyInstaller/)
-4. Use PyInstaller to get a binary from the source files. `pyinstaller --onefile docker_registry_tool.py`
+4. Use PyInstaller to get a binary from the source files: `pyinstaller --onefile docker_registry_tool.py`.
 5. You will get the binary file in the dist folder. 
 
 ## Configuration
@@ -34,14 +34,14 @@ The script configuration is made in the `docker_registry_tool.conf` file. You ca
 ### Get detailed information about an image stored in the Taiger Docker Registry
 There are two subcommands designed specifically to retrieve technical information about an image:
 
-* General information (identifiers, layers, ...) → `docker_registry_tool info --remote-image {IMAGE TO CHECK} --tag {TAG}` .Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag . For example, `docker_registry_tool info --remote-image ubuntu --tag latest`
-* Digest → `docker_registry_tool digest --remote-image {IMAGE TO CHECK} --tag {TAG}`. Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag . For example, `docker_registry_tool digest --remote-image ubuntu --tag development`
+* General information (identifiers, layers, ...) → `docker_registry_tool info --remote-image {IMAGE TO CHECK} --tag {TAG}` .Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example, `docker_registry_tool info --remote-image ubuntu --tag latest`
+* Digest → `docker_registry_tool digest --remote-image {IMAGE TO CHECK} --tag {TAG}`. Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example, `docker_registry_tool digest --remote-image ubuntu --tag development`
 
 ### Uploading a new image to the Taiger Docker Registry
-If you want to push a new image stored in the Taiger Docker Registry, then type this command `docker_registry_tool upload --remote-image {IMAGE TO CHECK} --tag {TAG}` . Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example, `docker_registry_tool upload --remote-image ubuntu --tag development`
+If you want to push a new image stored in the Taiger Docker Registry, then type this command `docker_registry_tool upload --remote-image {IMAGE TO CHECK} --tag {TAG}`. Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example, `docker_registry_tool upload --remote-image ubuntu --tag development`
 
 ### Downloading an image stored in the Taiger Docker Registry
-If you want to pull an image stored in the Taiger Docker Registry, then type this command `docker_registry_tool download --remote-image {IMAGE TO CHECK} --tag {TAG}`. Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example,  `docker_registry_tool download --remote-image mysql --tag latest`
+If you want to pull an image stored in the Taiger Docker Registry, then type this command `docker_registry_tool download --remote-image {IMAGE TO CHECK} --tag {TAG}`. Replace `{IMAGE TO CHECK}` and `{TAG}` with the proper image name and tag. For example, `docker_registry_tool download --remote-image mysql --tag latest`
 
 ### Process Docker Compose files that uses image stored in the Taiger Docker Registry
 If you want to use a Docker Compose file that has linked some images stored in the Taiger Docker Registry, then type this command `docker_registry_tool compose --local-compose {DIRECTORY}`. Replace `{DIRECTORY}` with the directory where the Docker Compose file is. For example, `docker_registry_tool compose --local-compose /Users/Foo/Desktop/Project`
@@ -55,7 +55,7 @@ Notice that this command will commit your local image too with the changes made 
 If you want to get all images stored in the server, then you must type `docker_registry_tool images`.
 
 ### List all tags stored in the Taiger Docker Registry
-If you want to get all tags of an image, then you must type `docker_registry_tool tags --remote-image {IMAGE TO CHECK}`. Replace `{IMAGE TO CHECK}` with the proper image name. For example, `docker_registry_tool tags --remote-image ubuntu`
+If you want to get all tags of an image, then you must type `docker_registry_tool tags --remote-image {IMAGE TO CHECK}`. Replace `{IMAGE TO CHECK}` with the proper image name. For example, `docker_registry_tool tags --remote-image ubuntu`.
 
 ### Search for an image stored in the Taiger Docker Registry
 Issue the following command to search for an image: `docker_registry_tool search --criteria {SEARCH CRITERIA}`. Replace `{SEARCH CRITERIA}` with the proper search criteria. The command will return a list with the names of the images that satisfy the search condition. For example, `docker_registry_tool search --criteria ub` will retrieve all names that contains "ub".
