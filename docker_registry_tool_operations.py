@@ -1,4 +1,5 @@
 import os
+import sys
 import re
 import subprocess
 from ConfigParser import SafeConfigParser
@@ -13,7 +14,14 @@ class DockerRegistryToolOperations(object):
     def login():
         """This function authenticates with the Docker Registry by using the configured account."""
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
         registry_username = parser.get('docker_registry_tool', 'RegistryUsername')
@@ -33,7 +41,14 @@ class DockerRegistryToolOperations(object):
     def logout():
         """This function de-authenticates with the Docker Registry."""
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
         try:
@@ -51,7 +66,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryProtocol') + parser.get('docker_registry_tool',
                                                                                                'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
@@ -67,7 +89,14 @@ class DockerRegistryToolOperations(object):
     def list_images(self):
         """Action for issuing images sub-command. Lists all images stored in the Docker Registry. """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryProtocol') + parser.get('docker_registry_tool',
                                                                                                'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
@@ -85,7 +114,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryProtocol') + parser.get('docker_registry_tool',
                                                                                                'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
@@ -104,7 +140,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryProtocol') + parser.get('docker_registry_tool',
                                                                                                'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
@@ -126,7 +169,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryProtocol') + parser.get('docker_registry_tool',
                                                                                                'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
@@ -156,7 +206,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
         call_tag_arguments = []
@@ -187,7 +244,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
         call_tag_arguments = ['docker', 'tag']
@@ -215,7 +279,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
         try:
@@ -235,7 +306,14 @@ class DockerRegistryToolOperations(object):
         :param args: the values passed by the user
         """
         parser = SafeConfigParser()
-        parser.read('docker_registry_tool.conf')
+        # determine if application is a script file or frozen exe
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(__file__)
+
+        config_path = os.path.join(application_path, 'docker_registry_tool.conf')
+        parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryProtocol') + parser.get('docker_registry_tool',
                                                                                                'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
