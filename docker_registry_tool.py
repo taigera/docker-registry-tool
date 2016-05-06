@@ -11,7 +11,7 @@ from docker_registry_tool_operations import DockerRegistryToolOperations
 
 
 class DockerRegistryTool(object):
-    CONST_SCRIPT_VERSION = '1.0.1'
+    CONST_SCRIPT_VERSION = '1.0.2'
 
     @staticmethod
     def main():
@@ -63,8 +63,6 @@ class DockerRegistryTool(object):
         parser_upload.add_argument('--local-image', dest='local_image', required=True,
                                    help='Image to upload to the Docker Registry from your computer')
         parser_upload.add_argument('--tag', dest='tag', required=True, help='Tag for identifying the image version')
-        parser_upload.add_argument('--force-tag', dest='force_tag', choices=['true', 'false'],
-                                   help='Force tag of image')
         parser_upload.set_defaults(func=DockerRegistryToolOperations().upload_image)
 
         # create the parser for the "compose" command
@@ -126,7 +124,6 @@ class DockerRegistryTool(object):
         registry_port = parser.get('docker_registry_tool', 'RegistryPort')
         registry_username = parser.get('docker_registry_tool', 'RegistryUsername')
         registry_password = parser.get('docker_registry_tool', 'RegistryPassword')
-        registry_email = parser.get('docker_registry_tool', 'RegistryEmail')
         certificate_path = parser.get('docker_registry_tool', 'CertificatePath')
 
         if not registry_address:
@@ -147,10 +144,6 @@ class DockerRegistryTool(object):
             return False
         if not registry_password:
             print '[ERROR] RegistryPassword variable is empty in the configuration file. The script will not run until' \
-                  ' you configure the script properly'
-            return False
-        if not registry_email:
-            print '[ERROR] RegistryEmail variable is empty in the configuration file. The script will not run until' \
                   ' you configure the script properly'
             return False
         if not certificate_path:

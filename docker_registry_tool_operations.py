@@ -26,8 +26,7 @@ class DockerRegistryToolOperations(object):
             'docker_registry_tool', 'RegistryPort')
         registry_username = parser.get('docker_registry_tool', 'RegistryUsername')
         registry_password = parser.get('docker_registry_tool', 'RegistryPassword')
-        registry_email = parser.get('docker_registry_tool', 'RegistryEmail')
-        call_arguments = ['docker', 'login', '--username=' + registry_username, '--password=' + registry_password, '--email=' + registry_email,
+        call_arguments = ['docker', 'login', '--username=' + registry_username, '--password=' + registry_password,
                           registry_address]
         try:
             call(call_arguments)
@@ -254,12 +253,8 @@ class DockerRegistryToolOperations(object):
         parser.read(config_path)
         registry_address = parser.get('docker_registry_tool', 'RegistryAddress') + ':' + parser.get(
             'docker_registry_tool', 'RegistryPort')
-        call_tag_arguments = ['docker', 'tag']
-
-        if args.force_tag == "true":
-            call_tag_arguments.append('--force=true')
-        call_tag_arguments.append(args.local_image)
-        call_tag_arguments.append(registry_address + '/' + args.local_image + ':' + args.tag)
+        call_tag_arguments = ['docker', 'tag', args.local_image,
+                              registry_address + '/' + args.local_image + ':' + args.tag]
         try:
             DockerRegistryToolOperations().login()
             with open(os.devnull, 'w') as devnull:
