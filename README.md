@@ -30,6 +30,13 @@ Follow these instructions to compile and install docker-registry-tool.
 ## Configuration
 The script configuration is made in the `docker_registry_tool.conf` file. You can open and modify it with a plain text editor. This file must be in the same path where the Docker Registry Tool is stored. 
 
+## Requisites
+Before running the tool, ensure you satisfy the following requisites.
+* A Docker Registry valid user account and certificate.
+* A working Internet connection.
+* In Windows, you will need to have installed the [Microsoft Visual C++ 2010 Redistributable Package](https://www.microsoft.com/en-us/download/details.aspx?id=5555).
+
+
 ## Run
 ### Get detailed information about an image stored in the Taiger Docker Registry
 There are two subcommands designed specifically to retrieve technical information about an image:
